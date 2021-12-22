@@ -10,7 +10,7 @@ using cadastro_cliente.repository.Context;
 namespace cadastro_cliente.repository.Migrations
 {
     [DbContext(typeof(CustomerContext))]
-    [Migration("20211222030920_Initial")]
+    [Migration("20211222033638_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
