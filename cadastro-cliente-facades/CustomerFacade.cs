@@ -52,7 +52,7 @@ namespace cadastro_cliente_facades
         public static bool ValidateCpf(string CPF)
         {
             if (CPF.Length == 11)
-            {
+    {
                 return true;
             }else return false;
             ;
