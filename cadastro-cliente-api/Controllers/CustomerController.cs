@@ -29,5 +29,28 @@ namespace cadastro_cliente_api.Controllers
             return Ok(customer);
         }
 
+        [HttpGet]
+        public async Task<ActionResult> GetAll()
+        {
+            List<Customer> customers = await _customerFacade.GetAll();
+
+            return Ok(customers);
+        }
+
+        [HttpGet("id")]
+        public async Task<ActionResult> GetById([FromQuery] string id)
+        {
+            var customer = await _customerFacade.GetById(id);
+
+            return Ok(customer);
+        }
+
+        [HttpGet("phone/id")]
+        public async Task<ActionResult> GetPhonesById([FromQuery] string id)
+        {
+            var phones = await _customerFacade.GetPhonesById(id);
+
+            return Ok(phones);
+        }
     }
 }

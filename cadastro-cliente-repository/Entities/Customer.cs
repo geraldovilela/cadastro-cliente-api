@@ -12,26 +12,26 @@ namespace cadastro_cliente_repository.Entities
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        public Guid Id { get; init; }
+        public Guid Id { get; set; }
 
-        public string Name { get; init; }
+        public string Name { get; set; }
 
-        public DateTime BirthDate { get; init; }
+        public DateTime BirthDate { get; set; }
 
-        public string Facebook { get; init; }
+        public string Facebook { get; set; }
 
-        public string Linkedin { get; init; }
+        public string Linkedin { get; set; }
 
-        public string Twitter { get; init; }
+        public string Twitter { get; set; }
 
-        public string Instagram { get; init; }
+        public string Instagram { get; set; }
 
-        public List<PhoneNumber> Phones { get; init; }
+        public ICollection<PhoneNumber> Phones { get; set; }
 
-        public List<Address> Adress { get; init; }
+        public ICollection<Address> Adress { get; set; }
 
-        public string RG { get; init; }
+        public string RG { get; set; }
 
-        public string CPF { get; init; }
+        public string CPF { get; set; }
     };
 }

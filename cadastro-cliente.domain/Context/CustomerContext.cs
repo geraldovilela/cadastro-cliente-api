@@ -12,7 +12,7 @@ namespace cadastro_cliente.repository.Context
                     
         }
 
-        public DbSet<Address> Customer { get; set; }
+        public DbSet<Customer> Customer { get; set; }
 
         public DbSet<Address> Adresses { get; set; }
 
@@ -20,6 +20,8 @@ namespace cadastro_cliente.repository.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Customer>().HasMany(a => a.Adress).WithOne();
+            modelBuilder.Entity<Customer>().HasMany(p => p.Phones).WithOne();
             modelBuilder.ApplyConfiguration(new CustomerCfg());
             modelBuilder.ApplyConfiguration(new AddressCfg());
             modelBuilder.ApplyConfiguration(new PhoneNumberCfg());

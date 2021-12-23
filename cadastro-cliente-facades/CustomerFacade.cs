@@ -4,6 +4,7 @@ using cadastro_cliente_facades.Interfaces;
 using cadastro_cliente_repository.DTOs;
 using cadastro_cliente_repository.Entities;
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -43,6 +44,21 @@ namespace cadastro_cliente_facades
             throw new NotImplementedException();
         }
 
+        async Task<List<Customer>> ICustomerFacade.GetAll()
+        {
+            return await _customerRepository.GetAll();
+        }
+
+        public async Task<Customer> GetById(string id)
+        {
+            return await _customerRepository.GetById(id); ;
+        }
+
+        public async Task<List<PhoneNumber>> GetPhonesById(string id)
+        {
+            return await _customerRepository.GetPhonesById(id); ;
+        }
+
         public static string ClearString(string s)
         {
             var regEx = new Regex("[^0-9a-zA-Z]+");
@@ -57,5 +73,6 @@ namespace cadastro_cliente_facades
             }else return false;
             ;
         }
+
     }
 }

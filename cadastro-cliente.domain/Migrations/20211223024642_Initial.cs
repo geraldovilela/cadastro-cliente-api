@@ -27,7 +27,7 @@ namespace cadastro_cliente.repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "adress",
+                name: "address",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -39,9 +39,9 @@ namespace cadastro_cliente.repository.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_adress", x => x.Id);
+                    table.PrimaryKey("PK_address", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_adress_customer_CustomerId",
+                        name: "FK_address_customer_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "customer",
                         principalColumn: "Id",
@@ -56,34 +56,35 @@ namespace cadastro_cliente.repository.Migrations
                     PhoneType = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DDD = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PhoneNumbers = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CustomerId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    CustomerId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CustomerId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_phone_number", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_phone_number_customer_CustomerId",
-                        column: x => x.CustomerId,
+                        name: "FK_phone_number_customer_CustomerId1",
+                        column: x => x.CustomerId1,
                         principalTable: "customer",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_adress_CustomerId",
-                table: "adress",
+                name: "IX_address_CustomerId",
+                table: "address",
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_phone_number_CustomerId",
+                name: "IX_phone_number_CustomerId1",
                 table: "phone_number",
-                column: "CustomerId");
+                column: "CustomerId1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "adress");
+                name: "address");
 
             migrationBuilder.DropTable(
                 name: "phone_number");

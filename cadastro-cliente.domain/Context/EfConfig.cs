@@ -22,7 +22,7 @@ namespace cadastro_cliente.repository.Context
     {
         public void Configure(EntityTypeBuilder<Address> builder)
         {
-            builder.ToTable("adress");
+            builder.ToTable("address");
         }
 
     }
