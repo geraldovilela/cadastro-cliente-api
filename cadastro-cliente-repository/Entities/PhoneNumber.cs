@@ -15,6 +15,5 @@ namespace cadastro_cliente_repository.Entities
 
         public string PhoneNumbers { get; set; }
 
-        public string? CustomerId { get; set; }
     }
 }

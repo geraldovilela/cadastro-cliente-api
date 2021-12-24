@@ -14,5 +14,7 @@ namespace cadastro_cliente_facades.Interfaces
         public Task<List<Customer>> GetAll();
         public Task<Customer> GetById(string id);
         public Task<List<PhoneNumber>> GetPhonesById(string id);
+
+        public Task<List<Address>> GetAddressById(string id);
     }
 }

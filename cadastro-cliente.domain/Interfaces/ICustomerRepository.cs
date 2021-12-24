@@ -16,5 +16,7 @@ namespace cadastro_cliente.repository.Interfaces
         Task<Customer> GetById(string id);
 
         Task<List<PhoneNumber>> GetPhonesById(string id);
+
+        Task<List<Address>> GetAddressById(string id);
     }
 }

@@ -10,7 +10,7 @@ using cadastro_cliente.repository.Context;
 namespace cadastro_cliente.repository.Migrations
 {
     [DbContext(typeof(CustomerContext))]
-    [Migration("20211223024642_Initial")]
+    [Migration("20211224004026_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -90,10 +90,7 @@ namespace cadastro_cliente.repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("CustomerId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("CustomerId1")
+                    b.Property<Guid?>("CustomerId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("DDD")
@@ -107,7 +104,7 @@ namespace cadastro_cliente.repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId1");
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("phone_number");
                 });
@@ -123,7 +120,7 @@ namespace cadastro_cliente.repository.Migrations
                 {
                     b.HasOne("cadastro_cliente_repository.Entities.Customer", null)
                         .WithMany("Phones")
-                        .HasForeignKey("CustomerId1");
+                        .HasForeignKey("CustomerId");
                 });
 
             modelBuilder.Entity("cadastro_cliente_repository.Entities.Customer", b =>

@@ -56,15 +56,14 @@ namespace cadastro_cliente.repository.Migrations
                     PhoneType = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DDD = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PhoneNumbers = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CustomerId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CustomerId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    CustomerId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_phone_number", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_phone_number_customer_CustomerId1",
-                        column: x => x.CustomerId1,
+                        name: "FK_phone_number_customer_CustomerId",
+                        column: x => x.CustomerId,
                         principalTable: "customer",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -76,9 +75,9 @@ namespace cadastro_cliente.repository.Migrations
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_phone_number_CustomerId1",
+                name: "IX_phone_number_CustomerId",
                 table: "phone_number",
-                column: "CustomerId1");
+                column: "CustomerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

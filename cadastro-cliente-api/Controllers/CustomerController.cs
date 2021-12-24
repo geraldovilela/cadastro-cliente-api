@@ -25,7 +25,7 @@ namespace cadastro_cliente_api.Controllers
         public async Task<ActionResult> Create([FromBody] CustomerDTO data)
         {
             var customer = await _customerFacade.CreateCustomer(data);
-            
+
             return Ok(customer);
         }
 
@@ -51,6 +51,14 @@ namespace cadastro_cliente_api.Controllers
             var phones = await _customerFacade.GetPhonesById(id);
 
             return Ok(phones);
+        }
+
+        [HttpGet("address/id")]
+        public async Task<ActionResult> GetAddressById([FromQuery] string id)
+        {
+            var addresses = await _customerFacade.GetAddressById(id);
+
+            return Ok(addresses);
         }
     }
 }

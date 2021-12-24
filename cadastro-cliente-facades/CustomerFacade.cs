@@ -59,6 +59,10 @@ namespace cadastro_cliente_facades
             return await _customerRepository.GetPhonesById(id); ;
         }
 
+        public async Task<List<Address>> GetAddressById(string id)
+        {
+            return await _customerRepository.GetAddressById(id); ;
+        }
         public static string ClearString(string s)
         {
             var regEx = new Regex("[^0-9a-zA-Z]+");
