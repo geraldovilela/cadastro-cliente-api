@@ -1,4 +1,5 @@
-﻿using cadastro_cliente_repository.Entities;
+﻿using cadastro_cliente_repository.DTOs;
+using cadastro_cliente_repository.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,7 @@ namespace cadastro_cliente.repository.Interfaces
         Task<List<PhoneNumber>> GetPhonesById(string id);
 
         Task<List<Address>> GetAddressById(string id);
+
+        Task<Customer> UpdateCustomer(string id, Customer customer);
     }
 }

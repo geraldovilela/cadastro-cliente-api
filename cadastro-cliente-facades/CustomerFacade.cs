@@ -44,7 +44,7 @@ namespace cadastro_cliente_facades
             throw new NotImplementedException();
         }
 
-        async Task<List<Customer>> ICustomerFacade.GetAll()
+        public async Task<List<Customer>> GetAll()
         {
             return await _customerRepository.GetAll();
         }
@@ -63,6 +63,21 @@ namespace cadastro_cliente_facades
         {
             return await _customerRepository.GetAddressById(id); ;
         }
+
+        public async Task<Customer> UpdateCustomer(string id, CustomerDTO data)
+        {
+            data.CPF = ClearString(data.CPF);
+            data.RG = ClearString(data.CPF);
+            if (!ValidateCpf(data.CPF))
+            {
+                throw new Exception("CPF Invalido.");
+            }
+            var customer = _mapper.Map<Customer>(data);
+            var UpdatedCustomer = await _customerRepository.UpdateCustomer(id, customer);
+
+            return UpdatedCustomer;
+        }
+      
         public static string ClearString(string s)
         {
             var regEx = new Regex("[^0-9a-zA-Z]+");

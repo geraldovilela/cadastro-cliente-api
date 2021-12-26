@@ -1,6 +1,7 @@
 ﻿using cadastro_cliente_facades.Interfaces;
 using cadastro_cliente_repository.DTOs;
 using cadastro_cliente_repository.Entities;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 namespace cadastro_cliente_api.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("MyPolicy")]
     [ApiController]
     public class CustomerController : ControllerBase
     {
@@ -59,6 +61,15 @@ namespace cadastro_cliente_api.Controllers
             var addresses = await _customerFacade.GetAddressById(id);
 
             return Ok(addresses);
+        }
+
+        [HttpPut("id")]
+        public async Task<ActionResult> UpdateCustomer([FromQuery] string id,
+                                                       [FromBody] CustomerDTO customer)
+        {
+            var UpdatedCustomer = await _customerFacade.UpdateCustomer(id,customer);
+
+            return Ok();
         }
     }
 }
